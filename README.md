@@ -1,3 +1,3 @@
 # Voxel-3d-renderer-
 
-A voxel engine made entirely in python and pygame.
+A basic voxel renderer made entirely in python and pygame.

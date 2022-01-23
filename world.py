@@ -1,4 +1,3 @@
-import functions as fn
 from graphics_pipeline import Pipeline
 
 from pygame import Vector3 as vec3
@@ -41,8 +40,10 @@ class World:
                         self.chunks.add_block([x, y, z], Voxel())
 
         self.mesh = []  # self.chunks.greedy_mesh((0, 0, 0))
-        for chunk_pos in self.chunks.chunks:
-            self.mesh += self.chunks.greedy_mesh(chunk_pos)
+        # for chunk_pos in self.chunks.chunks:
+            # self.mesh += self.chunks.greedy_mesh(chunk_pos)
+
+        self.chunks.update_mesh_buffer()
 
         self.pipeline = Pipeline(self)
         self.pipeline.set_light([110 , 129480123,123988993])
@@ -56,5 +57,8 @@ class World:
         self.renderer.show_fps()
 
     def update_objects(self):
+        self.mesh.clear()
+        for mesh in self.chunks.mesh_buffer:
+            self.mesh.extend(self.chunks.mesh_buffer[mesh])
         self.pipeline.update()
         self.pipeline.send(self.mesh)

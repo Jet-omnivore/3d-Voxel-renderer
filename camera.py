@@ -3,7 +3,6 @@ import math
 import time
 
 from matrix import Mat4
-from functions import cap
 from pygame import Vector3
 
 HALF_PI = math.pi / 2
